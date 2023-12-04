@@ -15,8 +15,16 @@ let links = document.links;
 let keywords = ["Каталог автомобилей", "Купить автомобиль", "Продажа автомобилей"];
 let keyword = keywords[getRandom(0, keywords.length)];
 
-input.value = keyword;
-button.click();
+let i = 0;
+
+let timerId = setInterval (() => {
+  input.value += keyword[i];
+  i++
+  if (i == keyword.length) {
+    clearInterval(timerId);  
+    button.click();
+  }
+}, 500)
 
 for (let i = 0; i < links.length; i++) {
   if (links[i].href.includes("auto.ru")) {
